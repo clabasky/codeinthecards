@@ -225,9 +225,25 @@
 
 		<script>
 
+			var getPossibilities = function(count){
+				var point = false;
+				if(6 <= count) point = true;
+			    if(0 == count) return 0;
+			    count--;
+			    var possibilities = 52;
+			    var cardCount = 52;
+			    while(count > 0){
+			        cardCount--;
+			        count--;
+			        possibilities = possibilities * cardCount;
+			    }
+			    return (point) ? possibilities.toPrecision(5) : possibilities;
+			};
+
 			var setOrderOfDeckTitle = function(){
-				var remaining = 52 - currentOrder.length;
-				var text = 'Order of your deck ('+currentOrder.length+'/52)';
+				//var remaining = 52 - currentOrder.length;
+				var possibilities = getPossibilities(currentOrder.length);
+				var text = 'Order of your deck ('+currentOrder.length+' selected, '+possibilities+' different possibilities)';
 				$('#orderOfDeckTitle').text(text);
 			};
 
