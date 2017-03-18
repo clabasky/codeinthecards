@@ -1,7 +1,7 @@
 # codeinthecards
 
 
-Code in the cards is a super simple way to create coded messages. 
+Code in the cards is a super simple way to create coded messages using an ordinary deck of playing cards. 
 
 A live example can be seen here - https://dxbe26btdbbn4.cloudfront.net/
 
