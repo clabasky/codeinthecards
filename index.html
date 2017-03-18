@@ -1,0 +1,423 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+
+
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-89850194-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<style>
+			.cardImage {
+				width: 7%;
+			}
+			.fuzzy {
+				opacity: .2;
+			}
+			/*
+			.cardContainer {
+			   width: 100%;
+			   height: 100%;
+			   position: relative;
+			}
+			.cardHover {
+			   float: left;
+			   position: absolute;
+			   left: 0px;
+			   top: 0px;
+			   height: 100%;
+			   width: 100%;
+			   z-index: 1000;
+			   color: #FFFFFF;
+			   font-weight: bold;
+			}
+			*/
+		</style>
+
+
+		
+ 
+    </head>
+
+
+
+    <body>
+
+    	<nav class="navbar navbar-inverse ">
+	      <div class="container">
+	        <div class="navbar-header">
+	          
+	          <a class="navbar-brand" href="#">Code In The Cards - An insanely secure way to send secret messages to friends!</a>
+	        </div>
+	        
+	      </div>
+	    </nav>
+
+	    <!-- Main jumbotron for a primary marketing message or call to action 
+	    <div style="background-image:'https://thumbs.dreamstime.com/z/seamless-vector-pattern-icons-playing-cards-black-red-white-repeating-background-series-og-gaming-gambling-68303194.jpg'"class="jumbotron">
+	      <div class="container">
+	      <!--h3>
+	      An ridiculously secure way to send secret messages to friends!
+	      </h3-->
+	      </div>
+	    </div>
+
+	    <div class="container">
+	        <div class="row">
+
+	        </div>
+	      <div class="row">
+	        <div class="col-md-6">
+	          <h2>Create a secret message</h2>
+	          <div class="form-group">
+			    <label for="exampleTextarea">Enter your secret message here</label>
+			    <textarea style="width: 80%;" class="form-control" id="secretMessageTextarea" rows="3"></textarea>
+			  </div>
+
+			  
+			
+	          <p><a class="btn btn-default" id="createSecretMessageBtn" role="button">Create Secret Message &raquo;</a></p>
+	        </div>
+	        <div class="col-md-6">
+	          <h2>Decrypt a secret message</h2>
+	          <p style="padding-top: 23px;
+    font-weight: bold;
+    padding-bottom: 41px;">Click the cards below in the same order that they appear in your deck to see if you have received a secret message!</p>
+	          <p><a class="btn btn-default" id="viewSecretMessageBtn" role="button">View Secret Message &raquo;</a></p>
+	        </div>
+	        
+	      </div>
+
+	      <h2 style="margin-top: 65px;" id="orderOfDeckTitle">
+	      	
+	      </h2>
+	       <p><a class="btn btn-default" id="clearDeckOrderBtn" role="button">Clear</a></p>
+
+
+	      <div id="selectedCardsRow" class="row">
+	      	
+	      </div>
+	      <hr>
+	      <div class="row">
+	      	<img id="unselected_ac" class="cardImage" src="images/Playing_card_club_A.svg">
+	      	<img id="unselected_2c" class="cardImage" src="images/Playing_card_club_2.svg">
+	      	<img id="unselected_3c" class="cardImage" src="images/Playing_card_club_3.svg">
+	      	<img id="unselected_4c" class="cardImage" src="images/Playing_card_club_4.svg">
+	      	<img id="unselected_5c" class="cardImage" src="images/Playing_card_club_5.svg">
+	      	<img id="unselected_6c" class="cardImage" src="images/Playing_card_club_6.svg">
+	      	<img id="unselected_7c" class="cardImage" src="images/Playing_card_club_7.svg">
+	      	<img id="unselected_8c" class="cardImage" src="images/Playing_card_club_8.svg">
+	      	<img id="unselected_9c" class="cardImage" src="images/Playing_card_club_9.svg">
+	      	<img id="unselected_tc" class="cardImage" src="images/Playing_card_club_10.svg">
+	      	<img id="unselected_jc" class="cardImage" src="images/Playing_card_club_J.svg">
+	      	<img id="unselected_qc" class="cardImage" src="images/Playing_card_club_Q.svg">
+	      	<img id="unselected_kc" class="cardImage" src="images/Playing_card_club_K.svg">
+	      	<br>
+	      	<img id="unselected_ad" class="cardImage" src="images/Playing_card_diamond_A.svg">
+	      	<img id="unselected_2d" class="cardImage" src="images/Playing_card_diamond_2.svg">
+	      	<img id="unselected_3d" class="cardImage" src="images/Playing_card_diamond_3.svg">
+	      	<img id="unselected_4d" class="cardImage" src="images/Playing_card_diamond_4.svg">
+	      	<img id="unselected_5d" class="cardImage" src="images/Playing_card_diamond_5.svg">
+	      	<img id="unselected_6d" class="cardImage" src="images/Playing_card_diamond_6.svg">
+	      	<img id="unselected_7d" class="cardImage" src="images/Playing_card_diamond_7.svg">
+	      	<img id="unselected_8d" class="cardImage" src="images/Playing_card_diamond_8.svg">
+	      	<img id="unselected_9d" class="cardImage" src="images/Playing_card_diamond_9.svg">
+	      	<img id="unselected_td" class="cardImage" src="images/Playing_card_diamond_10.svg">
+	      	<img id="unselected_jd" class="cardImage" src="images/Playing_card_diamond_J.svg">
+	      	<img id="unselected_qd" class="cardImage" src="images/Playing_card_diamond_Q.svg">
+	      	<img id="unselected_kd" class="cardImage" src="images/Playing_card_diamond_K.svg">
+	      	<br>
+	      	<img id="unselected_ah" class="cardImage" src="images/Playing_card_heart_A.svg">
+	      	<img id="unselected_2h" class="cardImage" src="images/Playing_card_heart_2.svg">
+	      	<img id="unselected_3h" class="cardImage" src="images/Playing_card_heart_3.svg">
+	      	<img id="unselected_4h" class="cardImage" src="images/Playing_card_heart_4.svg">
+	      	<img id="unselected_5h" class="cardImage" src="images/Playing_card_heart_5.svg">
+	      	<img id="unselected_6h" class="cardImage" src="images/Playing_card_heart_6.svg">
+	      	<img id="unselected_7h" class="cardImage" src="images/Playing_card_heart_7.svg">
+	      	<img id="unselected_8h" class="cardImage" src="images/Playing_card_heart_8.svg">
+	      	<img id="unselected_9h" class="cardImage" src="images/Playing_card_heart_9.svg">
+	      	<img id="unselected_th" class="cardImage" src="images/Playing_card_heart_10.svg">
+	      	<img id="unselected_jh" class="cardImage" src="images/Playing_card_heart_J.svg">
+	      	<img id="unselected_qh" class="cardImage" src="images/Playing_card_heart_Q.svg">
+	      	<img id="unselected_kh" class="cardImage" src="images/Playing_card_heart_K.svg">
+	      	<br>
+	      	<img id="unselected_as" class="cardImage" src="images/Playing_card_spade_A.svg">
+	      	<img id="unselected_2s" class="cardImage" src="images/Playing_card_spade_2.svg">
+	      	<img id="unselected_3s" class="cardImage" src="images/Playing_card_spade_3.svg">
+	      	<img id="unselected_4s" class="cardImage" src="images/Playing_card_spade_4.svg">
+	      	<img id="unselected_5s" class="cardImage" src="images/Playing_card_spade_5.svg">
+	      	<img id="unselected_6s" class="cardImage" src="images/Playing_card_spade_6.svg">
+	      	<img id="unselected_7s" class="cardImage" src="images/Playing_card_spade_7.svg">
+	      	<img id="unselected_8s" class="cardImage" src="images/Playing_card_spade_8.svg">
+	      	<img id="unselected_9s" class="cardImage" src="images/Playing_card_spade_9.svg">
+	      	<img id="unselected_ts" class="cardImage" src="images/Playing_card_spade_10.svg">
+	      	<img id="unselected_js" class="cardImage" src="images/Playing_card_spade_J.svg">
+	      	<img id="unselected_qs" class="cardImage" src="images/Playing_card_spade_Q.svg">
+	      	<img id="unselected_ks" class="cardImage" src="images/Playing_card_spade_K.svg">
+<!--
+	      	<div class="cardContainer">
+			    <div class="cardHover"></div>
+			    <img class="cardsImage" src="cards.png"/>
+			</div>
+			-->
+
+	      </div>
+ 		
+ 		<hr>
+
+ 		<div class="jumbotron">
+	      <div class="container">
+	      	<h3>
+	      	Did you know there are more than 8X10<sup>67</sup> possible arrangements of a deck of cards? 
+	      	</h3>
+	      	<p>
+	      	This means that every time you shuffle a deck of cards, it's almost definitely the first time that 
+	      	card arrangement has ever existed or will ever exist!
+	      	<!--
+	      	This is what that number looks like: 80,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 
+	        -->
+	        </p>
+	        <p>
+	        Using this concept, you can create a secret message that can only be decoded by someone that knows the exact
+	        card arrangement that created it. All messages are encrypted using AES-256. Give it a try!
+	        </p>
+	        <!--<h1>Hello, world!</h1>
+	        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+	        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+	        -->
+	      </div>
+	    </div>
+
+ 		<div class="row">
+	 		<div class="col-md-3">
+	 		</div>
+	 		<div class="col-md-3">
+		 		Explainer video:
+		 		<br>
+		 		<iframe width="560" height="315" src="https://www.youtube.com/embed/uNS1QvDzCVw?rel=0" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="col-md-3">
+			</div>
+	 	</div>
+	 	<hr>
+	      <footer>
+	        <p>&copy; 2017 Advntr</p>
+	      </footer>
+	    </div> <!-- /container -->
+
+	    
+
+		<script>
+
+			var setOrderOfDeckTitle = function(){
+				var remaining = 52 - currentOrder.length;
+				var text = 'Order of your deck ('+remaining+' remaining)'
+				$('#orderOfDeckTitle').text(text);
+			};
+
+			var clearCurrentOrder = function(){
+				$('.fuzzy').removeClass('fuzzy');
+				currentOrder = [];
+				showCurrentOrder();
+				setOrderOfDeckTitle();
+			};
+
+			var showCurrentOrder = function(){
+				
+				var selectedCardsRow = $('#selectedCardsRow');
+				selectedCardsRow.empty();
+
+				for(var x = 0; x < currentOrder.length; x++){
+					var cardId = currentOrder[x];
+					var number = cardId[0];
+					var suit = cardId[1];
+					
+					var imgSrc = 'images/Playing_card_';
+
+					switch(suit){
+						case 'c':
+							imgSrc += 'club_';
+							break;
+						case 'd':
+							imgSrc += 'diamond_';
+							break;
+						case 'h':
+							imgSrc += 'heart_';
+							break;
+						case 's':
+							imgSrc += 'spade_';
+							break;
+					}
+
+					switch(number){
+						case 'a':
+							imgSrc += 'A';
+							break;
+						case 't':
+							imgSrc += '10';
+							break;
+						case 'j':
+							imgSrc += 'J';
+							break;
+						case 'q':
+							imgSrc += 'Q';
+							break;
+						case 'k':
+							imgSrc += 'K';
+							break;
+						default:
+							imgSrc += number
+					}
+					imgSrc += '.svg';
+
+					var selectedCard = '<img src="'+imgSrc+'" id="selected_'+cardId+'" class="cardImage"  >';
+					selectedCardsRow.append(selectedCard);
+				}
+			};
+
+			var currentOrder = [];
+
+			var cards = [
+			    "ac","ad","ah","as",
+			    "2c","2d","2h","2s",
+			    "3c","3d","3h","3s",
+			    "4c","4d","4h","4s",
+			    "5c","5d","5h","5s",
+			    "6c","6d","6h","6s",
+			    "7c","7d","7h","7s",
+			    "8c","8d","8h","8s",
+			    "9c","9d","9h","9s",
+			    "tc","td","th","ts",
+			    "jc","jd","jh","js",
+			    "qc","qd","qh","qs",
+			    "kc","kd","kh","ks"
+			];
+
+			$('body').on('click','img',function(ev){
+				
+				var id = ev.target.id;
+
+				if(-1 != id.search('unselected') || -1 != id.search('selected')){
+
+					var cardId = id.split('_')[1];
+					var currentOrderIndex = currentOrder.indexOf(cardId);
+
+					if(-1 != id.search('unselected')){
+						if(-1 == currentOrderIndex){
+							currentOrder.push(cardId);
+							$('#unselected_'+cardId).addClass('fuzzy');
+						}
+					}
+					
+					else {
+						currentOrder.splice(currentOrderIndex, 1);
+						$('#unselected_'+cardId).removeClass('fuzzy');
+					}
+
+					showCurrentOrder();
+					setOrderOfDeckTitle();
+				}
+
+			});
+
+
+			$('#createSecretMessageBtn').click(function(){
+				
+				var message = $('#secretMessageTextarea').val();
+
+				if(52 != currentOrder.length){
+					alert('You must select the order of all 52 cards to create a secret message');
+					return;
+				}
+				
+				if(0 == message.length){
+					alert('You must create a secret message in the form above');
+					return;
+				}
+
+				var postObj = {message:message, deck:currentOrder};
+
+				$.ajax({
+				    url: 'https://kwqv2ofye7.execute-api.us-east-1.amazonaws.com/v1/deck',
+				    type: 'POST',
+				    crossDomain: true,
+				    contentType: 'application/json',
+				    data: JSON.stringify(postObj),
+				    dataType: 'json',
+				    success: function(res) {
+				        
+				        if(res.success){
+				        	clearCurrentOrder();
+							$('#secretMessageTextarea').val('');
+				        }
+				        alert(res.message);
+						
+				    },
+				    error: function(xhr, ajaxOptions, thrownError) {
+				        alert('something went wrong.... please try again later');
+				    }
+				});
+
+			});
+
+
+
+			$('#viewSecretMessageBtn').click(function(){
+				
+				if(52 != currentOrder.length){
+					alert('You must select the order of all 52 cards to view a secret message');
+					return;
+				}
+
+				var deckStr = encodeURIComponent(JSON.stringify(currentOrder));
+
+				$.ajax({
+				    url: 'https://kwqv2ofye7.execute-api.us-east-1.amazonaws.com/v1/deck?deck='+deckStr,
+				    type: 'GET',
+				    crossDomain: true,
+				    contentType: 'application/json',
+				    dataType: 'json',
+				    success: function(res) {
+				        if(res.success){
+				        	clearCurrentOrder();
+				        }
+				        alert(res.message);
+						
+				    },
+				    error: function(xhr, ajaxOptions, thrownError) {
+				        alert('something went wrong.... please try again later');
+				    }
+				});
+
+			});
+
+
+			$('#clearDeckOrderBtn').click(function(){
+				clearCurrentOrder();
+			});
+
+			setOrderOfDeckTitle();
+
+			$( function() {
+			    $( "#topInfo" ).accordion();
+			  } );
+
+		</script>
+    </body>
+    </html>
