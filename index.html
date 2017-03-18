@@ -237,6 +237,7 @@
 			        count--;
 			        possibilities = possibilities * cardCount;
 			    }
+			    if(52 < possibilities) possibilities = possibilities/2;
 			    return (point) ? possibilities.toPrecision(5) : possibilities;
 			};
 
