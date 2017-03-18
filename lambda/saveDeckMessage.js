@@ -34,7 +34,7 @@ exports.saveDeckMessage = (event, context, callback) => {
     }
     
     var reverseDeck = [];
-    for(var x = 51; x > -1; x--){
+    for(var x = (deck.length - 1); x > -1; x--){
         reverseDeck.push(deck[x]);
     }
     
