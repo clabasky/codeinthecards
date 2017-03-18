@@ -227,7 +227,7 @@
 
 			var setOrderOfDeckTitle = function(){
 				var remaining = 52 - currentOrder.length;
-				var text = 'Order of your deck ('+remaining+' remaining)'
+				var text = 'Order of your deck ('+currentOrder.length+'/52)';
 				$('#orderOfDeckTitle').text(text);
 			};
 
@@ -341,10 +341,6 @@
 				
 				var message = $('#secretMessageTextarea').val();
 
-				if(52 != currentOrder.length){
-					alert('You must select the order of all 52 cards to create a secret message');
-					return;
-				}
 				
 				if(0 == message.length){
 					alert('You must create a secret message in the form above');
@@ -380,10 +376,6 @@
 
 			$('#viewSecretMessageBtn').click(function(){
 				
-				if(52 != currentOrder.length){
-					alert('You must select the order of all 52 cards to view a secret message');
-					return;
-				}
 
 				var deckStr = encodeURIComponent(JSON.stringify(currentOrder));
 
